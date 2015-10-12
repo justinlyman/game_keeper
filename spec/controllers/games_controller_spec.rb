@@ -40,7 +40,7 @@ RSpec.describe GamesController, :type => :controller do
   end
 
   describe 'GET new' do
-    it 'renders new action and remplate' do
+    it 'renders new action and template' do
       get :new
       expect(response).to be_success # 200 Success
       expect(response).to render_template(:new)
