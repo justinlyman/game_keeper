@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        Borrowers
+        <%= link_to 'New Borrower', new_borrower_path, class: 'btn btn-default btn-xs pull-right' %>
+      </div>
+      
+      <div class="panel-body">
+        <% if @borrowers.count > 0 %>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @borrowers.each do |borrower| %>
+                <tr>
+                  <td><%= borrower.full_name %></td>
+                  <td>
+                    <%= link_to  'Edit', edit_borrower_path(borrower), class: 'btn btn-warning btn-xs' %>
+                    <%= link_to  'Destroy', borrower_path(borrower), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>  
+        <% else %>
+          <h4>No borrowers added</h4>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
