@@ -36,9 +36,14 @@ gem 'bootstrap-sass'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+  gem 'rspec-rails', '~> 3.3.3'
+  gem 'pry-rails', '~> 0.3.4'
+  gem 'guard-rspec', '~> 4.6.4'
+  gem 'factory_girl_rails', '~> 4.5.0'
   gem 'rails_layout'
 end
+
+gem 'simplecov', :require => false, :group => :test
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
