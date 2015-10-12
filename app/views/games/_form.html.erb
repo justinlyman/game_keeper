@@ -1,16 +1,6 @@
-<%= form_for @game do |f| %>
-  <% if @game.errors.size > 0 %>
-    <ul>
-      <% @game.errors.each do |field, error| %>
-        <li><%= error %></li>
-      <% end %>
-    </ul>
-  <% end %>
-
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-
-  <div>
-    <%= f.submit %>
-  </div>
+<%= simple_form_for(@game, html: { class: 'form' }) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :name %>
+  <%= f.button :submit %>
+  <%= link_to 'Cancel', borrowers_path, class: 'btn btn-danger' %>
 <% end %>

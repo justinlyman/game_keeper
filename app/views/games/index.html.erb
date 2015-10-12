@@ -1,26 +1,36 @@
-<h1>Games</h1>
+<div class="row">
+  <div class="col-md-12">
 
-<div>
-  <%= link_to 'New Game', [:new, :game] %>
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        Games
+        <%= link_to 'New Game', new_game_path, class: 'btn btn-default btn-xs pull-right' %>
+      </div>
+
+      <div class="panel-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @games.each do |game| %>
+              <tr>
+                <td><%= game.name %></td>
+                <td>
+                  <%= link_to 'View', game, class: 'btn btn-primary btn-xs' %>
+                  <%= link_to 'Edit', [:edit, game], class: 'btn btn-warning btn-xs' %>
+                  <%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure you want to destroy?' }, class: 'btn btn-danger btn-xs' %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+    
+  </div>
 </div>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @games.each do |game| %>
-      <tr>
-        <td><%= game.name %></td>
-        <td>
-          <%= link_to 'View', game %>
-          <%= link_to 'Edit', [:edit, game] %>
-          <%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure you want to destroy?' } %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
