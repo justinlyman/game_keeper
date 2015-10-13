@@ -3,6 +3,8 @@ class GamesController < ApplicationController
 
   def index
     @games = Game.order(:name)
+    @borrow = Borrow.new
+    @available_games = Game.available
   end
 
   def show
@@ -33,11 +35,8 @@ class GamesController < ApplicationController
   end
 
   def destroy
-    if @game.destroy
-      redirect_to :games, notice: 'Game destroyed'
-    else
-      redirect_to @game, notice: 'Game couldn\'t be destroyed'
-    end
+    @game.destroy
+    redirect_to :games, notice: 'Game destroyed'
   end
 
   protected

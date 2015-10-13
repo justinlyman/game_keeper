@@ -6,6 +6,16 @@ RSpec.describe Borrower, type: :model do
     expect(Borrower.new).to_not be_nil
   end
 
+  describe 'associations' do
+    it 'has_many borrows' do
+      expect(Borrower.reflect_on_association(:borrows).macro).to eq(:has_many)
+    end
+
+    it 'has_many games' do
+      expect(Borrower.reflect_on_association(:games).macro).to eq(:has_many)
+    end
+  end
+
   describe 'validations' do
     it 'validates presence of first_name' do
       game = FactoryGirl.build(:borrower, first_name: nil)

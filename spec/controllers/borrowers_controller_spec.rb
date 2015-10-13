@@ -71,6 +71,15 @@ RSpec.describe BorrowersController, type: :controller do
   end
 
   describe 'DELETE destroy' do
+    it 'redirects to borrowers if outstanding borrows' do
+      @game = FactoryGirl.create(:game)
+      @borrow = FactoryGirl.create(:borrow, game: @game, borrower: @borrower)
+      delete :destroy, {id: @borrower.id}
+      expect(response.status).to eq(302) # 302 Redirect
+      expect(response).to redirect_to :borrowers
+      expect(flash[:error]).to eq('You must check in all borrowed games before removing borrower')
+    end
+
     it 'deletes borrower record' do
       delete :destroy, {id: @borrower.id}
       expect(response.status).to eq(302) # 302 Redirect

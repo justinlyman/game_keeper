@@ -31,8 +31,12 @@ class BorrowersController < ApplicationController
   end
 
   def destroy
-    @borrower.destroy
-    redirect_to :borrowers, notice: 'Borrower destroyed'
+    if @borrower.outstanding_borrows.count > 0
+      redirect_to :borrowers, flash: { error: "You must check in all borrowed games before removing borrower" }
+    else
+      @borrower.destroy
+      redirect_to :borrowers, notice: 'Borrower destroyed'
+    end
   end
 
 private

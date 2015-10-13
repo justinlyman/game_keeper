@@ -12,6 +12,7 @@
             <thead>
               <tr>
                 <th>Name</th>
+                <th>Games Borrowed</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -19,6 +20,15 @@
               <% @borrowers.each do |borrower| %>
                 <tr>
                   <td><%= borrower.full_name %></td>
+                  <td>
+                    <% if borrower.outstanding_borrows.count > 0 %>
+                      <% borrower.outstanding_borrows.each do |borrow| %>
+                        <% if borrow.game %>
+                          <span class="label label-primary"><%= borrow.game.name %></span>
+                        <% end %>
+                      <% end %>
+                    <% end %>
+                  </td>
                   <td>
                     <%= link_to  'Edit', edit_borrower_path(borrower), class: 'btn btn-warning btn-xs' %>
                     <%= link_to  'Destroy', borrower_path(borrower), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %>
