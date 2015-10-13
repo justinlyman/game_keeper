@@ -2,4 +2,5 @@
   <%= f.association :game, collection: @available, selected: params['game_id'], include_blank: true %>
   <%= f.association :borrower, label_method: :full_name %>
   <%= f.button :submit, @label %>
+  <%= link_to 'Cancel', games_path, class: 'btn btn-danger' %>
 <% end %>
