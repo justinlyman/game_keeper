@@ -16,3 +16,7 @@ Game.create!(name: 'Tikal')
 Game.create!(name: 'Terra Mystica')
 Game.create!(name: 'Puerto Rico')
 Game.create!(name: '7 Wonders')
+
+Borrower.create!(first_name: 'George', last_name: 'Washington')
+Borrower.create!(first_name: 'John', last_name: 'Adams')
+Borrower.create!(first_name: 'Thomas', last_name: 'Jefferson')
